@@ -1,4 +1,5 @@
-﻿using _72HourAssignment.Services;
+﻿using _72HourAssignment.Models;
+using _72HourAssignment.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,27 @@ namespace _72HourAssignment.API.Controllers
     [Authorize]
     public class ReplyController : ApiController
     {
-        // POST(Create) a Reply to a Comment using a Foreign Key relationship (required)
         private ReplyService CreateReplyService()
         {
-        var userId = Guid.Parse(User.Identity.GetAuthorId());
+            var authorId = Guid.Parse(User.Identity.GetAuthorId());
             var replyService = new ReplyService(replyId);
             return replyService;
+        }
+        // POST(Create) a Reply to a Comment using a Foreign Key relationship (required)
+        public IHttpActionResult Post(ReplyCreate reply)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var service = CreateReplyService();
+
+            if (!service.CreateReply(reply))
+            {
+                return InternalServerError();
+            }
+            return Ok();
         }
 
         // GET Replies By Comment Id(required)

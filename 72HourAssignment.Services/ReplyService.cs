@@ -1,4 +1,5 @@
 ﻿using _72HourAssignment.Data;
+using _72HourAssignment.Data.Data;
 using _72HourAssignment.Models;
 using System;
 using System.Collections.Generic;
@@ -49,26 +50,26 @@ namespace _72HourAssignment.Services
                             {
                                 ReplyId = e.ReplyId,
                                 CommentId = e.CommentId,
-                                CreatedUtc - e.CreatedUtc,
+                                CreatedUtc = e.CreatedUtc,
                             }
                             );
             return query.ToArray();
         }
     }
 
-    public GetReplyByCommentId(int commentId)
+    public ReplyDetails GetReplyByCommentId(int commentId)
     {
         using (var ctx = new ApplicationDbContext())
         {
             var entity =
                 ctx
-                    .Reply
-                    .Single(e => e.ReplyId == replyId && e.CommentId == _commentId);
-            return
-                new ReplyDetail
+                    .Replies
+                    .Single(e => e.ReplyId == ReplyId && e.CommentId == _commentId);
+            return new ReplyDetails
                 {
                     ReplyId = entity.ReplyId,
                     Text = entity.Text,
+                    CommentId = entity.CommentId,
                     CreatedUtc = entity.CreatedUtc,
                     ModifiedUtc = entity.ModifiedUtc
                 };
