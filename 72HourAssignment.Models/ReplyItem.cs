@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _72HourAssignment.Models
 {
-    public class RelplyCreate
+    public class CreateReply
     {
         [Key]
         public int Id { get; set; }
