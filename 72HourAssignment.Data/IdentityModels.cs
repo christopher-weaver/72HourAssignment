@@ -34,6 +34,7 @@ namespace _72HourAssignment.Data
         }
 
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Reply> Replies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -17,37 +17,38 @@ namespace _72HourAssignment.Services
             _authorId = authorId;
         }
 
-        public bool CreateReply(CreateReply reply)
+        public bool CreateReply(ReplyCreate reply)
         {
             var entity =
                     new Reply()
                     {
-                        ReplyId = _replyid,
+                        AuthorId = _authorId,
+                        CommentId = reply.CommentId,
                         Text = reply.Text,
                         CreatedUtc = DateTimeOffset.Now,
                     };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Reply.Add(entity);
+                ctx.Replies.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
     }
 
-    public Inumerable<ReplyListItem> GetReplies()
+    public IEnumerable<ReplyListItem> GetReplies()
     {
         using (var ctx = new ApplicationDbContext())
         {
             var query =
                 ctx
-                    .Reply
-                    .Where(e => e.ReplyId == _authorId)
+                    .Replies
+                    .Where(e => e.CommentId == _commentId)
                     .Select(
                         e =>
                             new ReplyListItem
                             {
                                 ReplyId = e.ReplyId,
-                                Title = e.Title,
+                                CommentId = e.CommentId,
                                 CreatedUtc - e.CreatedUtc,
                             }
                             );

@@ -22,5 +22,8 @@ namespace _72HourAssignment.Data
 
         [Required]
         public Guid AuthorId { get; set; }
+
+        [Display(Name = "Created")]
+        public DateTimeOffset CreatedUtc { get; set; }
     }
 }
