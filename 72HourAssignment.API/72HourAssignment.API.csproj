@@ -48,6 +48,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlClient">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\31ef1hzf.cue\AutoMLService\System.Data.SqlClient.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -313,6 +316,14 @@
     <ProjectReference Include="..\72HourAssignment.Data\72HourAssignment.Data.csproj">
       <Project>{265E94B3-25C3-4B97-816F-0ACFA7EA95AF}</Project>
       <Name>72HourAssignment.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\72HourAssignment.Models\72HourAssignment.Models.csproj">
+      <Project>{44d016d3-1e9d-4b06-b8c2-f09453ce2dae}</Project>
+      <Name>72HourAssignment.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\72HourAssignment.Services\72HourAssignment.Services.csproj">
+      <Project>{4aac9734-aa08-49cd-b8e4-1a6f6896abe0}</Project>
+      <Name>72HourAssignment.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
