@@ -11,7 +11,7 @@ namespace _72HourAssignment.Data
     public class Reply
     {
         [Key]
-        public int Id { get; set; }
+        public int ReplyId { get; set; }
 
         [ForeignKey(nameof(Comment))]
         public int CommentId { get; set; }

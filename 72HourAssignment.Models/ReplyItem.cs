@@ -12,7 +12,7 @@ namespace _72HourAssignment.Models
     public class CreateReply
     {
         [Key]
-        public int Id { get; set; }
+        public int ReplyId { get; set; }
 
         [ForeignKey(nameof(Comment))]
         public int CommentId { get; set; }

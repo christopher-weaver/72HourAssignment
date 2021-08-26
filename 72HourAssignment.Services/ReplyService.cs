@@ -1,4 +1,5 @@
 ﻿using _72HourAssignment.Data;
+using _72HourAssignment.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +17,13 @@ namespace _72HourAssignment.Services
             _authorId = authorId;
         }
 
-        public bool CreateReply(ReplyCreate model)
+        public bool CreateReply(CreateReply reply)
         {
             var entity =
                     new Reply()
                     {
-                        OwnerId = _authorId,
-                        Title = model.Title,
-                        Content = model.Content,
+                        ReplyId = _replyid,
+                        Text = reply.Text,
                         CreatedUtc = DateTimeOffset.Now,
                     };
             using (var ctx = new ApplicationDbContext())
@@ -41,7 +41,7 @@ namespace _72HourAssignment.Services
             var query =
                 ctx
                     .Reply
-                    .Where(e => e.OwnerId == _authorId)
+                    .Where(e => e.ReplyId == _authorId)
                     .Select(
                         e =>
                             new ReplyListItem
@@ -61,14 +61,13 @@ namespace _72HourAssignment.Services
         {
             var entity =
                 ctx
-                    .Replies
-                    .Single(e => e.ReplyId == id && e.CommentId == _commentId);
+                    .Reply
+                    .Single(e => e.ReplyId == replyId && e.CommentId == _commentId);
             return
                 new ReplyDetail
                 {
                     ReplyId = entity.ReplyId,
-                    Title = entity.Title,
-                    Content = entity.Content,
+                    Text = entity.Text,
                     CreatedUtc = entity.CreatedUtc,
                     ModifiedUtc = entity.ModifiedUtc
                 };
