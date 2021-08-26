@@ -65,9 +65,38 @@ namespace _72HourAssignment.API.Controllers
         }
 
         // PUT(Update) a Post
+        [HttpPut]
+        public IHttpActionResult Put(PostEdit post)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+      
+            var service = CreatePostService();
 
+            if (!service.UpdatePost(post))
+            {
+                return InternalServerError();
+            }
+            
+            return Ok();
+        }
 
         // DELETE a Post
+        [HttpDelete]
+        [Route("api/Post/{postId}")]
+        public IHttpActionResult Delete([FromUri] int postId)
+        {
+            var service = CreatePostService();
+
+            if (!service.DeletePost(postId))
+            {
+                return InternalServerError();
+            }
+            
+            return Ok();
+        }
 
 
         // Helper Methods

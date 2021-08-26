@@ -75,5 +75,47 @@ namespace _72HourAssignment.Services.Services
                 return query.ToArray();
             }
         }
+
+        public bool UpdatePost(PostEdit editedPost)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var postToEdit =
+                    ctx
+                        .Posts
+                        .Single(p => p.ID == editedPost.Id && p.AuthorId == _authorId);
+
+                if (postToEdit == null)
+                {
+                    return false;
+                }
+
+                postToEdit.Title = editedPost.Title;
+                postToEdit.Text = editedPost.Text;
+                // postToEdit.Comments = editedPost.Comments;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeletePost(int postId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var postToDelete =
+                    ctx
+                        .Posts
+                        .Single(p => p.ID == postId && p.AuthorId == _authorId);
+
+                if (postToDelete == null)
+                {
+                    return false;
+                }
+
+                ctx.Posts.Remove(postToDelete);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
