@@ -54,6 +54,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -313,6 +314,14 @@
     <ProjectReference Include="..\72HourAssignment.Data\72HourAssignment.Data.csproj">
       <Project>{265E94B3-25C3-4B97-816F-0ACFA7EA95AF}</Project>
       <Name>72HourAssignment.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\72HourAssignment.Models\72HourAssignment.Models.csproj">
+      <Project>{44D016D3-1E9D-4B06-B8C2-F09453CE2DAE}</Project>
+      <Name>72HourAssignment.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\72HourAssignment.Services\72HourAssignment.Services.csproj">
+      <Project>{4AAC9734-AA08-49CD-B8E4-1A6F6896ABE0}</Project>
+      <Name>72HourAssignment.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
