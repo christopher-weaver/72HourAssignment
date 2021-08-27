@@ -54,8 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\CommentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplyService.cs" />
+    <Compile Include="Services\PostService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -63,11 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\72HourAssignment.Data\72HourAssignment.Data.csproj">
-      <Project>{265e94b3-25c3-4b97-816f-0acfa7ea95af}</Project>
+      <Project>{265E94B3-25C3-4B97-816F-0ACFA7EA95AF}</Project>
       <Name>72HourAssignment.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\72HourAssignment.Models\72HourAssignment.Models.csproj">
-      <Project>{44d016d3-1e9d-4b06-b8c2-f09453ce2dae}</Project>
+      <Project>{44D016D3-1E9D-4B06-B8C2-F09453CE2DAE}</Project>
       <Name>72HourAssignment.Models</Name>
     </ProjectReference>
   </ItemGroup>
