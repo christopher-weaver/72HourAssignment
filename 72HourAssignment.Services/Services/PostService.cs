@@ -92,7 +92,6 @@ namespace _72HourAssignment.Services.Services
 
                 postToEdit.Title = editedPost.Title;
                 postToEdit.Text = editedPost.Text;
-                // postToEdit.Comments = editedPost.Comments;
 
                 return ctx.SaveChanges() == 1;
             }
