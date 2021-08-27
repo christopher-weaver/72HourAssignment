@@ -21,9 +21,24 @@ namespace _72HourAssignment.Services
             var entity = new Comment()
             {
                 AuthorId = _userId,
-                Text = model.Text
+                Text = model.Text,
+                PostId = model.PostId
             };
-                
+
+            //using (var ctx = new ApplicationDbContext())
+            //{
+            //    var postForComment =
+            //        ctx
+            //            .Posts
+            //            .Single(p => p.ID == model.PostId);
+
+            //    postForComment.Title = postForComment.Title;
+            //    postForComment.Text = postForComment.Text;
+            //    postForComment.Comments.Add = entity;
+
+            //    return ctx.SaveChanges() == 1;
+            //}
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Comments.Add(entity);
