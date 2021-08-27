@@ -34,45 +34,45 @@ namespace _72HourAssignment.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-    }
 
-    public IEnumerable<ReplyListItem> GetReplies()
-    {
-        using (var ctx = new ApplicationDbContext())
+        
+        public IEnumerable<ReplyListItem> GetReplies()
         {
-            var query =
-                ctx
-                    .Replies
-                    .Where(e => e.CommentId == _commentId)
-                    .Select(
-                        e =>
-                            new ReplyListItem
-                            {
-                                ReplyId = e.ReplyId,
-                                CommentId = e.CommentId,
-                                CreatedUtc = e.CreatedUtc,
-                            }
-                            );
-            return query.ToArray();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Replies
+                        .Where(e => e.AuthorId == _authorId)
+                        .Select(
+                            e =>
+                                new ReplyListItem
+                                {
+                                    ReplyId = e.ReplyId,
+                                    CommentId = e.CommentId,
+                                    CreatedUtc = e.CreatedUtc,
+                                }
+                                );
+                return query.ToArray();
+            }
         }
-    }
 
-    public ReplyDetails GetReplyByCommentId(int commentId)
-    {
-        using (var ctx = new ApplicationDbContext())
+        public ReplyDetails GetReplyByCommentId(int commentId)
         {
-            var entity =
-                ctx
-                    .Replies
-                    .Single(e => e.ReplyId == ReplyId && e.CommentId == _commentId);
-            return new ReplyDetails
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Replies
+                        .Single(e => e.ReplyId == commentId && e.AuthorId == _authorId);
+                return new ReplyDetails
                 {
                     ReplyId = entity.ReplyId,
                     Text = entity.Text,
                     CommentId = entity.CommentId,
                     CreatedUtc = entity.CreatedUtc,
-                    ModifiedUtc = entity.ModifiedUtc
-                };
+                   };
+            }
         }
     }
 }
