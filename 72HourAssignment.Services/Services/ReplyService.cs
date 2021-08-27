@@ -48,7 +48,7 @@ namespace _72HourAssignment.Services
                             e =>
                                 new ReplyListItem
                                 {
-                                    ReplyId = e.ReplyId,
+                                    ReplyId = e.Id,
                                     CommentId = e.CommentId,
                                     CreatedUtc = e.CreatedUtc,
                                 }
@@ -64,10 +64,10 @@ namespace _72HourAssignment.Services
                 var entity =
                     ctx
                         .Replies
-                        .Single(e => e.ReplyId == commentId && e.AuthorId == _authorId);
+                        .Single(e => e.Id == commentId && e.AuthorId == _authorId);
                 return new ReplyDetails
                 {
-                    ReplyId = entity.ReplyId,
+                    ReplyId = entity.Id,
                     Text = entity.Text,
                     CommentId = entity.CommentId,
                     CreatedUtc = entity.CreatedUtc,
