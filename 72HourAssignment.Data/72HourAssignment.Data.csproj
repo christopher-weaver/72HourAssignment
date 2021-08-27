@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Comment.cs" />
-    <Compile Include="Data\ReplyDetails.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Data\Post.cs" />
     <Compile Include="Migrations\202108250030249_InitialCreate.cs" />
@@ -94,6 +93,10 @@
     <Compile Include="Migrations\202108270014541_UpdatedComments.cs" />
     <Compile Include="Migrations\202108270014541_UpdatedComments.Designer.cs">
       <DependentUpon>202108270014541_UpdatedComments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108270106492_PostReplyMergeMigration2.cs" />
+    <Compile Include="Migrations\202108270106492_PostReplyMergeMigration2.Designer.cs">
+      <DependentUpon>202108270106492_PostReplyMergeMigration2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108270014541_UpdatedComments.resx">
       <DependentUpon>202108270014541_UpdatedComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108270106492_PostReplyMergeMigration2.resx">
+      <DependentUpon>202108270106492_PostReplyMergeMigration2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
