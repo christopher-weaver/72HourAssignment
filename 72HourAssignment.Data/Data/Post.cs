@@ -19,8 +19,6 @@ namespace _72HourAssignment.Data
         [Required]
         public string Text { get; set; }
 
-        [ForeignKey(nameof(Comments))]
-        public List<int> CommentIds { get; set; }
         public virtual List<Comment> Comments { get; set; }
 
         [Required]

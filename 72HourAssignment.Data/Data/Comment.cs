@@ -19,8 +19,8 @@ namespace _72HourAssignment.Data
         [Required]
         public Guid AuthorId { get; set; }
 
-        public List<Reply> ReplyIds { get; set; }
-        public virtual List<Reply> Replies { get; set; }
+        // public List<Reply> ReplyIds { get; set; }
+        // public virtual List<Reply> Replies { get; set; }
 
         [ForeignKey(nameof(Post))]
         public int PostId { get; set; }
