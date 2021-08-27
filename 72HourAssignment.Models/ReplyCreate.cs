@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _72HourAssignment.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _72HourAssignment.Data
+namespace _72HourAssignment.Models
 {
-    public class Reply
+    public class ReplyCreate
     {
         [Key]
         public int ReplyId { get; set; }
@@ -22,8 +23,5 @@ namespace _72HourAssignment.Data
 
         [Required]
         public Guid AuthorId { get; set; }
-
-        [Display(Name = "Created")]
-        public DateTimeOffset CreatedUtc { get; set; }
     }
 }

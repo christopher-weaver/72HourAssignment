@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Comment.cs" />
+    <Compile Include="Data\ReplyDetails.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Data\Post.cs" />
     <Compile Include="Migrations\202108250030249_InitialCreate.cs" />
