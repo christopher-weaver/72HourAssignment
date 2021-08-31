@@ -12,16 +12,18 @@ namespace _72HourAssignment.Models
     public class ReplyCreate
     {
         [Key]
-        public int ReplyId { get; set; }
+        public int ReplyId { get; set; } // don't need this on a create model - pks
 
-        [ForeignKey(nameof(Comment))]
-        public int CommentId { get; set; }
-        public virtual Comment Comment { get; set; }
+        [Required]
+        //[ForeignKey(nameof(Comment))] // no need for foreign key annotations here - pks
+        public int CommentId { get; set; } // unless you can have a reply without a comment best to make this Required - pks
+        //public virtual Comment Comment { get; set; } // don't use entities in your models - pks
 
         [Required]
         public string Text { get; set; }
 
-        [Required]
-        public Guid AuthorId { get; set; }
+        // don't need this because we can populate this from the built in ASP.NET identity logic - pks
+        //[Required] - pks
+        //public Guid AuthorId { get; set; } - pks
     }
 }

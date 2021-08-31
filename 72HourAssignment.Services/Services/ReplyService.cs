@@ -57,21 +57,23 @@ namespace _72HourAssignment.Services
             }
         }
 
-        public ReplyDetails GetReplyByCommentId(int commentId)
+        // since we can reply more than once to the same comment  we should return all the replies to a single comment
+        public IEnumerable<ReplyDetails> GetReplyByCommentId(int commentId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
+                var entities =
                     ctx
-                        .Replies
-                        .Single(e => e.Id == commentId && e.AuthorId == _authorId);
-                return new ReplyDetails
+                        .Replies 
+                        .Where(e => e.Id == commentId && e.AuthorId == _authorId); // we want more than one right? 
+
+                return entities.Select(e => new ReplyDetails
                 {
-                    ReplyId = entity.Id,
-                    Text = entity.Text,
-                    CommentId = entity.CommentId,
-                    CreatedUtc = entity.CreatedUtc,
-                   };
+                    ReplyId = e.Id,
+                    Text = e.Text,
+                    CommentId = e.CommentId,
+                    CreatedUtc = e.CreatedUtc,
+                }).ToList();
             }
         }
     }

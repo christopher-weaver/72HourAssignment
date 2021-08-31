@@ -50,21 +50,18 @@ namespace _72HourAssignment.Services
             }
         }
 
-        public CommentProperties GetCommentByPostId(int id)
+        // this should be get comments by post id, which means we need to search for the post and then return it's comments, not search for comments
+        public IEnumerable<CommentList> GetCommentByPostId(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                // this will break if there are no matching elements, use SingleOrDefault instead please and check for null
                 var entity =
                     ctx
-                    .Comments
-                    .Single(e => e.Id == id && e.AuthorId == _userId);
-                return new CommentProperties
-                {
-                    CommentId = entity.Id,
-                    Text = entity.Text,
-                    CreatedUtc = entity.CreatedUtc,
-                    ModifiedUtc = entity.ModifiedUtc
-                };
+                    .Posts
+                    .SingleOrDefault(e => e.ID == id && e.AuthorId == _userId);
+
+                return entity?.Comments?.Select(c => new CommentList { CommentId = c.Id, Text = c.Text, CreatedUtc = c.CreatedUtc }).ToList() ?? Enumerable.Empty<CommentList>();
             }
         }
 

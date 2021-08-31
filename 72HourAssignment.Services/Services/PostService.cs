@@ -1,4 +1,5 @@
 ﻿using _72HourAssignment.Data;
+using _72HourAssignment.Models;
 using _72HourAssignment.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,15 @@ namespace _72HourAssignment.Services.Services
                                    AuthorId = p.AuthorId,
                                    Title = p.Title,
                                    Text = p.Text,
-                                   Comments = p.Comments
+                                   Comments = p.Comments // don't pass entities from the Data layer out of controller end point
+                                                .Select(c => 
+                                                    new CommentList 
+                                                    { 
+                                                        Text = c.Text, 
+                                                        CommentId = c.Id, 
+                                                        CreatedUtc = c.CreatedUtc 
+                                                    })
+                                                .ToList()
                                });
 
                 return query.ToArray();
@@ -69,8 +78,16 @@ namespace _72HourAssignment.Services.Services
                                                 AuthorId = p.AuthorId,
                                                 Title = p.Title,
                                                 Text = p.Text,
-                                                Comments = p.Comments
-                                            });
+                                                Comments = p.Comments // same here
+                                                .Select(c =>
+                                                    new CommentList
+                                                    {
+                                                        Text = c.Text,
+                                                        CommentId = c.Id,
+                                                        CreatedUtc = c.CreatedUtc
+                                                    })
+                                                .ToList()
+                               });
 
                 return query.ToArray();
             }

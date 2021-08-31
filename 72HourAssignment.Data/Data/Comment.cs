@@ -29,5 +29,8 @@ namespace _72HourAssignment.Data
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset ModifiedUtc { get; set; }
+
+        // Should probably have a list of replies here 
+        // public virtual IList<Reply> {get; set;}
     }
 }

@@ -20,6 +20,7 @@ namespace _72HourAssignment.API.Controllers
             return replyService;
         }
         // POST(Create) a Reply to a Comment using a Foreign Key relationship (required)
+        [HttpPost]
         public IHttpActionResult Post(ReplyCreate reply)
         {
             if (!ModelState.IsValid)
@@ -37,8 +38,10 @@ namespace _72HourAssignment.API.Controllers
         }
 
         // GET Replies By Comment Id(required)
-
-        public IHttpActionResult Get(int commentId)
+        // Make sure we have an attribute here for the HTTP method - pks
+        [HttpGet]
+        [Route("api/Reply/{commentId}")] // if you want this to work without using the "Route" attribute, just make the name of the parameter id instead of commentId
+        public IHttpActionResult Get([FromUri] int commentId)
         {
             ReplyService replyService = CreateReplyService();
             var reply = replyService.GetReplyByCommentId(commentId);

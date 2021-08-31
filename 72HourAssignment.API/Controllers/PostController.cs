@@ -36,7 +36,7 @@ namespace _72HourAssignment.API.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            PostService postService = CreatePostService();
+            PostService postService = CreatePostService(); // see comments in the PostService about this one
             var posts = postService.GetPosts();
             return Ok(posts);
         }
