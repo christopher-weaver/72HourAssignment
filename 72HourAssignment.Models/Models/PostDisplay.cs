@@ -17,6 +17,6 @@ namespace _72HourAssignment.Models.Models
 
         public string Text { get; set; }
 
-        public virtual List<Comment> Comments { get; set; }
+        public virtual List<CommentList> Comments { get; set; } // don't pass entities out of your endpoints. 
     }
 }
